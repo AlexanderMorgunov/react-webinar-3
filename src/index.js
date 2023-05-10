@@ -2,7 +2,7 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import App from "./app.js";
 import Store from "./store.js";
-
+// добавил св-во count, по умолчанию равное 0
 export const store = new Store({
   list: [
     { code: 1, title: "Название элемента", count: 0 },
