@@ -45,7 +45,10 @@ class Store {
   addItem() {
     this.setState({
       ...this.state,
-      list: [...this.state.list, { code: getID(), title: "Новая запись" }],
+      list: [
+        ...this.state.list,
+        { code: getID(), title: "Новая запись", count: 0 },
+      ],
     });
   }
 
