@@ -52,7 +52,7 @@ function Item(props) {
           {getFormatNumber(props.item.price) + " ₽"}
         </div>
         <button onClick={() => props.onAddItem(props.item.code)}>
-          Добавить
+          {props.btnTitle}
         </button>
       </div>
     </div>

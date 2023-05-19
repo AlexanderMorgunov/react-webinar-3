@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import "./style.css";
 
 import List from "../list";
@@ -6,30 +6,29 @@ import Controls from "../controls";
 import Head from "../head";
 import PageLayout from "../page-layout";
 
-function ShoppingCart({ list }) {
-  const [isOpen, setIsOpen] = useState(false);
+function ShoppingCart({ list, setIsOpen, isOpen, store }) {
+  // const [isOpen, setIsOpen] = useState(true);
 
   const callbacks = {
-    // onDeleteItem: useCallback(
-    //   (code) => {
-    //     store.deleteItem(code);
-    //   },
-    //   [store]
-    // ),
-
+    onDeleteItem: useCallback(
+      (code) => {
+        store.deleteItem(code);
+      },
+      [store]
+    ),
     // onSelectItem: useCallback(
     //   (code) => {
     //     store.selectItem(code);
     //   },
     //   [store]
     // ),
-
     // onClose: useCallback(() => {
     //   store.addItemShoppingCart(code);
     // }, [store]),
-    onClose: () => {
-      setIsOpen(false);
-    },
+    // onClose: () => {
+    //   console.log(123);
+    //   setIsOpen(false);
+    // },
   };
 
   return (
@@ -39,11 +38,12 @@ function ShoppingCart({ list }) {
     >
       <PageLayout>
         <Head title="Корзина" />
-        <Controls onAdd={callbacks.onClose} title={"Закрыть"} />
+        <Controls setIsOpen={setIsOpen} title={"Закрыть"} isOpen={isOpen} />
         <List
           list={list.filter((el) => el.countShoppingCart)}
-          // onDeleteItem={callbacks.onDeleteItem}
-          onAddItem={callbacks.onAddItem}
+          onDeleteItem={callbacks.onDeleteItem}
+          btnTitle={"Удалить"}
+          // onAddItem={callbacks.onAddItem}
         />
       </PageLayout>
     </div>

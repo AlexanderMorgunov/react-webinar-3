@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import List from "./components/list";
 import Controls from "./components/controls";
 import Head from "./components/head";
@@ -13,6 +13,8 @@ import ShoppingCart from "./components/shopping-cart";
  */
 function App({ store }) {
   const list = store.getState().list;
+
+  const [isOpen, setIsOpen] = useState(false);
 
   const callbacks = {
     // onDeleteItem: useCallback(
@@ -35,21 +37,30 @@ function App({ store }) {
       },
       [store]
     ),
+    onForward: (open) => {
+      setIsOpen(open);
+    },
   };
 
   return (
     <>
       <PageLayout>
         <Head title="Магазин" />
-        <Controls onAdd={callbacks.onAddItem} title={"Перейти"} />
+        <Controls setIsOpen={setIsOpen} title={"Перейти"} isOpen={isOpen} />
         <ShoppingCartCalc list={list} />
         <List
           list={list}
           // onDeleteItem={callbacks.onDeleteItem}
           onAddItem={callbacks.onAddItem}
+          btnTitle="Добавить"
         />
       </PageLayout>
-      <ShoppingCart list={list} />
+      <ShoppingCart
+        list={list}
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        store={store}
+      />
     </>
   );
 }
