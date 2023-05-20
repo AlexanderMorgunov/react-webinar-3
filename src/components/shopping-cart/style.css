@@ -1,14 +1,30 @@
-.shoppingCartCalc {
-  position: relative;
-  bottom: 40px;
+.ShoppingCart {
+  position: absolute;
+  width: 960px;
+  height: 407px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* overflow: auto; */
+  background: #ffffff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+}
+.ShoppingCart-sum {
   font-family: "Arial";
   font-style: normal;
-  font-weight: 400;
+  font-weight: 700;
   font-size: 18px;
   text-align: end;
-  /* width: 250px; */
-  right: 120px;
+  padding: 10px 110px;
 }
-.shoppingCartCalc-bold {
-  font-weight: 700;
+.ShoppingCart-sum-text {
+  margin-right: 20px;
+}
+.ShoppingCart-empty {
+  width: 100;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

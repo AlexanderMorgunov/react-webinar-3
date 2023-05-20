@@ -54,13 +54,14 @@ function App({ store }) {
           onAddItem={callbacks.onAddItem}
           btnTitle="Добавить"
         />
+
+        <ShoppingCart
+          list={list}
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+          store={store}
+        />
       </PageLayout>
-      <ShoppingCart
-        list={list}
-        isOpen={isOpen}
-        setIsOpen={setIsOpen}
-        store={store}
-      />
     </>
   );
 }

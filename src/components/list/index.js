@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import Item from "../item";
 import "./style.css";
 
-function List({ list, onAddItem, showPrice, btnTitle }) {
+function List({ list, onAddItem, btnTitle, showCount }) {
   return (
     <div className="List">
       {list.map((item) => (
@@ -11,7 +11,7 @@ function List({ list, onAddItem, showPrice, btnTitle }) {
           <Item
             item={item}
             onAddItem={onAddItem}
-            showPrice={showPrice}
+            showCount={showCount}
             btnTitle={btnTitle}
           />
         </div>

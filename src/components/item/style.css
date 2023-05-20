@@ -33,3 +33,11 @@
   width: 150px;
   text-align: end;
 }
+.Item-count {
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  color: #404040;
+  width: 65px;
+}

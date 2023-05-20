@@ -4,7 +4,7 @@ import { plural } from "../../utils";
 import { getFormatNumber } from "../../utils";
 import "./style.css";
 
-function Item(props) {
+function Item({ showCount = false, ...props }) {
   // Счётчик выделений
   // const [count, setCount] = useState(0);
 
@@ -51,6 +51,9 @@ function Item(props) {
         <div className="Item-price">
           {getFormatNumber(props.item.price) + " ₽"}
         </div>
+        {showCount ? (
+          <div className="Item-count">{props.item.countShoppingCart} шт</div>
+        ) : null}
         <button onClick={() => props.onAddItem(props.item.code)}>
           {props.btnTitle}
         </button>

@@ -18,7 +18,9 @@ function ShoppingCartCalc({ list }) {
         {getFormatNumber(getSum(list))} ₽
       </span>
     </>
-  ) : null;
+  ) : (
+    <span>Корзина пуста</span>
+  );
 
   return <div className="shoppingCartCalc">{content}</div>;
 }

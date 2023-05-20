@@ -1,10 +1,10 @@
 import React, { useState, useCallback } from "react";
 import "./style.css";
-
 import List from "../list";
 import Controls from "../controls";
 import Head from "../head";
 import PageLayout from "../page-layout";
+import { getSum, getFormatNumber } from "../../utils";
 
 function ShoppingCart({ list, setIsOpen, isOpen, store }) {
   // const [isOpen, setIsOpen] = useState(true);
@@ -31,20 +31,33 @@ function ShoppingCart({ list, setIsOpen, isOpen, store }) {
     // },
   };
 
+  const goods = list.filter((el) => el.countShoppingCart);
+
   return (
     <div
       className="ShoppingCart"
       style={isOpen ? { display: "block" } : { display: "none" }}
     >
-      <PageLayout>
+      <PageLayout height={407}>
         <Head title="Корзина" />
         <Controls setIsOpen={setIsOpen} title={"Закрыть"} isOpen={isOpen} />
-        <List
-          list={list.filter((el) => el.countShoppingCart)}
-          onDeleteItem={callbacks.onDeleteItem}
-          btnTitle={"Удалить"}
-          // onAddItem={callbacks.onAddItem}
-        />
+        {goods.length ? (
+          <>
+            <List
+              list={goods}
+              onDeleteItem={callbacks.onDeleteItem}
+              btnTitle={"Удалить"}
+              showCount={true}
+              // onAddItem={callbacks.onAddItem}
+            />
+            <div className="ShoppingCart-sum">
+              <span className="ShoppingCart-sum-text">Итого</span>
+              {getFormatNumber(getSum(list))} ₽
+            </div>
+          </>
+        ) : (
+          <h1 className="ShoppingCart-empty">Корзина пуста</h1>
+        )}
       </PageLayout>
     </div>
   );
