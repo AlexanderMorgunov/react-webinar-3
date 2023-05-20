@@ -10,9 +10,7 @@ function Controls({ onAdd, title, setIsOpen, isOpen }) {
       }
     >
       {setIsOpen ? (
-        <button onClick={() => setIsOpen(!isOpen)} className="">
-          {title}
-        </button>
+        <button onClick={() => setIsOpen(!isOpen)}>{title}</button>
       ) : (
         <button onClick={() => onAdd()}>{title}</button>
       )}

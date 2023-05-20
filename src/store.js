@@ -71,7 +71,6 @@ class Store {
     this.setState({
       ...this.state,
       // Новый список, в котором не будет удаляемой записи
-      // list: this.state.list.filter((item) => item.code !== code),
       list: this.state.list.map((item) => {
         if (item.code === code) {
           return { ...item, countShoppingCart: 0 };
