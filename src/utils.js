@@ -73,6 +73,5 @@ export function getSum(arr) {
     .reduce((accumulator, currentValue, index, array) => {
       return accumulator + currentValue.price * currentValue.countShoppingCart;
     }, 0);
-  console.log(sum);
   return sum;
 }

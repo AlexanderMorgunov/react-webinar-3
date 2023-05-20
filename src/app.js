@@ -17,20 +17,6 @@ function App({ store }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const callbacks = {
-    // onDeleteItem: useCallback(
-    //   (code) => {
-    //     store.deleteItem(code);
-    //   },
-    //   [store]
-    // ),
-
-    // onSelectItem: useCallback(
-    //   (code) => {
-    //     store.selectItem(code);
-    //   },
-    //   [store]
-    // ),
-
     onAddItem: useCallback(
       (code) => {
         store.addItemShoppingCart(code);
@@ -48,12 +34,7 @@ function App({ store }) {
         <Head title="Магазин" />
         <Controls setIsOpen={setIsOpen} title={"Перейти"} isOpen={isOpen} />
         <ShoppingCartCalc list={list} />
-        <List
-          list={list}
-          // onDeleteItem={callbacks.onDeleteItem}
-          onAddItem={callbacks.onAddItem}
-          btnTitle="Добавить"
-        />
+        <List list={list} onSmthDo={callbacks.onAddItem} btnTitle="Добавить" />
 
         <ShoppingCart
           list={list}

@@ -3,11 +3,11 @@ import PropTypes from "prop-types";
 import { cn as bem } from "@bem-react/classname";
 import "./style.css";
 
-function PageLayout({ children, height }) {
+function PageLayout({ children, isModal }) {
   const cn = bem("PageLayout");
 
   return (
-    <div className={cn()} style={height ? { minHeight: `${height}px` } : null}>
+    <div className={isModal ? `${cn() + " PageLayout-shopping-cart"}` : cn()}>
       <div className={cn("center")}>{children}</div>
     </div>
   );

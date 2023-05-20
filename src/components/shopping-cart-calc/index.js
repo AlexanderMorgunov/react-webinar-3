@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { plural } from "../../utils";
 import { getCountGoods, getSum, getFormatNumber } from "../../utils";
 import "./style.css";
 
@@ -11,9 +12,14 @@ function ShoppingCartCalc({ list }) {
   }, [list]);
 
   const content = countGoods ? (
-    // toDo - применить фф-ю склонения слова - товара В корзине:{" "}
     <>
-      В корзине: {countGoods} товара /
+      В корзине: {countGoods}{" "}
+      {plural(countGoods, {
+        one: "товар",
+        few: "товара",
+        many: "товаров",
+      })}{" "}
+      /
       <span className="shoppingCartCalc-bold">
         {getFormatNumber(getSum(list))} ₽
       </span>

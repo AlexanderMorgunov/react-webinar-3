@@ -4,10 +4,15 @@ import "./style.css";
 
 function Controls({ onAdd, title, setIsOpen, isOpen }) {
   return (
-    <div className="Controls">
-      {/* <button onClick={() => onAdd()}>{title}</button> */}
+    <div
+      className={
+        title === "Закрыть" ? "Controls Controls-btnClose" : "Controls"
+      }
+    >
       {setIsOpen ? (
-        <button onClick={() => setIsOpen(!isOpen)}>{title}</button>
+        <button onClick={() => setIsOpen(!isOpen)} className="">
+          {title}
+        </button>
       ) : (
         <button onClick={() => onAdd()}>{title}</button>
       )}
