@@ -15,6 +15,7 @@ function PageLayout({ children, isModal }) {
 
 PageLayout.propTypes = {
   children: PropTypes.node,
+  isModal: PropTypes.bool,
 };
 
 export default React.memo(PageLayout);

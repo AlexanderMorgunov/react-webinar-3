@@ -1,10 +1,11 @@
-import React, { useState, useCallback } from "react";
+import React, { useCallback } from "react";
 import "./style.css";
 import List from "../list";
 import Controls from "../controls";
 import Head from "../head";
 import PageLayout from "../page-layout";
 import { getSum, getFormatNumber } from "../../utils";
+import PropTypes from "prop-types";
 
 function ShoppingCart({ list, setIsOpen, isOpen, store }) {
   const callbacks = {
@@ -48,5 +49,17 @@ function ShoppingCart({ list, setIsOpen, isOpen, store }) {
     </div>
   );
 }
+
+ShoppingCart.propTypes = {
+  list: PropTypes.arrayOf(
+    PropTypes.shape({
+      code: PropTypes.number,
+    })
+  ).isRequired,
+  isModal: PropTypes.bool,
+  setIsOpen: PropTypes.func,
+  isOpen: PropTypes.bool,
+  showCount: PropTypes.bool,
+};
 
 export default ShoppingCart;
