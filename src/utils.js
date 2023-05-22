@@ -62,16 +62,3 @@ export function getFormatNumber(number) {
     .reverse()
     .join("");
 }
-
-export function getCountGoods(arr) {
-  return arr.filter((el) => el.countShoppingCart).length;
-}
-
-export function getSum(arr) {
-  let sum = arr
-    .filter((el) => el.countShoppingCart)
-    .reduce((accumulator, currentValue, index, array) => {
-      return accumulator + currentValue.price * currentValue.countShoppingCart;
-    }, 0);
-  return sum;
-}

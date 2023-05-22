@@ -4,24 +4,18 @@ import { plural } from "../../utils";
 import { getCountGoods, getSum, getFormatNumber } from "../../utils";
 import "./style.css";
 
-function ShoppingCartCalc({ list }) {
-  const [countGoods, setCountGoods] = useState(getCountGoods(list));
-
-  useEffect(() => {
-    setCountGoods(getCountGoods(list));
-  }, [list]);
-
-  const content = countGoods ? (
+function ShoppingCartCalc({ sumShoppingCart, shoppingCartCount }) {
+  const content = shoppingCartCount ? (
     <>
-      В корзине: {countGoods}{" "}
-      {plural(countGoods, {
+      В корзине: {shoppingCartCount}{" "}
+      {plural(shoppingCartCount, {
         one: "товар",
         few: "товара",
         many: "товаров",
       })}{" "}
       /
       <span className="shoppingCartCalc-bold">
-        {getFormatNumber(getSum(list))} ₽
+        {getFormatNumber(sumShoppingCart)} ₽
       </span>
     </>
   ) : (

@@ -13,6 +13,9 @@ import ShoppingCart from "./components/shopping-cart";
  */
 function App({ store }) {
   const list = store.getState().list;
+  const sumShoppingCart = store.getState().sumShoppingCart;
+  const shoppingCartCount = store.getState().shoppingCartCount;
+  const listShoppingCart = store.getState().shoppingCartArr;
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -33,14 +36,19 @@ function App({ store }) {
       <PageLayout>
         <Head title="Магазин" />
         <Controls setIsOpen={setIsOpen} title={"Перейти"} isOpen={isOpen} />
-        <ShoppingCartCalc list={list} />
+        <ShoppingCartCalc
+          sumShoppingCart={sumShoppingCart}
+          shoppingCartCount={shoppingCartCount}
+        />
         <List list={list} onSmthDo={callbacks.onAddItem} btnTitle="Добавить" />
 
         <ShoppingCart
-          list={list}
+          list={listShoppingCart}
           isOpen={isOpen}
           setIsOpen={setIsOpen}
           store={store}
+          sumShoppingCart={sumShoppingCart}
+          shoppingCartCount={shoppingCartCount}
         />
       </PageLayout>
     </>

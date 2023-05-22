@@ -7,7 +7,14 @@ import PageLayout from "../page-layout";
 import { getSum, getFormatNumber } from "../../utils";
 import PropTypes from "prop-types";
 
-function ShoppingCart({ list, setIsOpen, isOpen, store }) {
+function ShoppingCart({
+  list,
+  setIsOpen,
+  isOpen,
+  store,
+  sumShoppingCart,
+  shoppingCartCount,
+}) {
   const callbacks = {
     onDeleteItem: useCallback(
       (code) => {
@@ -16,8 +23,6 @@ function ShoppingCart({ list, setIsOpen, isOpen, store }) {
       [store]
     ),
   };
-
-  const goods = list.filter((el) => el.countShoppingCart);
 
   return (
     <div
@@ -28,17 +33,17 @@ function ShoppingCart({ list, setIsOpen, isOpen, store }) {
         <PageLayout isModal={true}>
           <Head title="Корзина" />
           <Controls setIsOpen={setIsOpen} title={"Закрыть"} isOpen={isOpen} />
-          {goods.length ? (
+          {list.length ? (
             <>
               <List
-                list={goods}
+                list={list}
                 onSmthDo={callbacks.onDeleteItem}
                 btnTitle={"Удалить"}
                 showCount={true}
               />
               <div className="ShoppingCart-sum">
                 <span className="ShoppingCart-sum-text">Итого</span>
-                {getFormatNumber(getSum(list))} ₽
+                {getFormatNumber(sumShoppingCart)} ₽
               </div>
             </>
           ) : (

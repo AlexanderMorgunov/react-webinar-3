@@ -15,7 +15,7 @@ function Item({ showCount = false, ...props }) {
           {getFormatNumber(props.item.price) + " ₽"}
         </div>
         {showCount ? (
-          <div className="Item-count">{props.item.countShoppingCart} шт</div>
+          <div className="Item-count">{props.item.count} шт</div>
         ) : null}
         <button onClick={() => props.onSmthDo(props.item.code)}>
           {props.btnTitle}
